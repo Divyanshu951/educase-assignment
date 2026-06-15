@@ -8,6 +8,18 @@ export default function Signup() {
     "yes",
   );
 
+  const [formInputs, setFormInputs] = useState({
+    fullname: "Marry Doe",
+    phone: "+91 9999999999",
+    email: "marrydoe26@gmail.com",
+    password: "password",
+    company: "Educase India",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
   return (
     <div className="flex h-full flex-col gap-7.25 px-5 py-10">
       <h1 className="mb-0.5 max-w-47 text-[28px] leading-9 font-medium text-[#1D2226]">
@@ -16,41 +28,51 @@ export default function Signup() {
 
       <Input
         type="text"
+        name="fullname"
         placeholder="Enter Full Name"
         labelTitle="Full Name"
-        mandatory={true}
-        value="Marry Doe"
+        mandatory
+        value={formInputs.fullname}
+        onChange={handleChange}
       />
 
       <Input
         type="tel"
-        placeholder="Enter Phone number*"
+        name="phone"
+        placeholder="Enter Phone number"
         labelTitle="Phone number"
-        mandatory={true}
-        value="+91 9999999999"
+        mandatory
+        value={formInputs.phone}
+        onChange={handleChange}
       />
 
       <Input
         type="email"
+        name="email"
         placeholder="Enter Email address"
         labelTitle="Email Address"
-        mandatory={true}
-        value="marrydoe26@gmail.com"
+        mandatory
+        value={formInputs.email}
+        onChange={handleChange}
       />
 
       <Input
         type="password"
+        name="password"
         placeholder="Enter password"
         labelTitle="Password"
-        mandatory={true}
-        value="password"
+        mandatory
+        value={formInputs.password}
+        onChange={handleChange}
       />
 
       <Input
         type="text"
+        name="company"
         placeholder="Company name"
         labelTitle="Enter Company name"
-        value="Educase India"
+        value={formInputs.company}
+        onChange={handleChange}
       />
 
       <div>

@@ -7,6 +7,8 @@ type Props = {
   className?: string;
   mandatory?: boolean;
   value?: string;
+  name: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function Input({
@@ -16,6 +18,8 @@ export default function Input({
   className,
   mandatory = false,
   value,
+  name,
+  onChange,
 }: Props) {
   return (
     <div className="relative">
@@ -26,12 +30,14 @@ export default function Input({
 
       <input
         type={type}
+        name={name}
         placeholder={placeholder}
         className={cn(
           "h-10 w-full rounded-md border border-[#CBCBCB] px-4 text-sm tracking-normal text-[#1D2226] outline-none placeholder:text-[#919191] focus:border-violet-500",
           className,
         )}
         value={value}
+        onChange={onChange}
       />
     </div>
   );
